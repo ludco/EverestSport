@@ -1,6 +1,3 @@
-import { PostsController } from './controller/posts.controller';
-import { SlotsController } from './controller/slots.controller';
-import { ReservationController } from './controller/reservation.controller';
 import express from 'express';
 
 import loaders from './loaders';
@@ -15,9 +12,6 @@ async function startServer() {
     await loaders(app);
 
     // Ajout des différentes route de votre application
-    PostsController(app);
-    SlotsController(app);
-    ReservationController(app);
     ProductsController(app);
 
     // Démarrage du serveur une fois que tout est correctement init

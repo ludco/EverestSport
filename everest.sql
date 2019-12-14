@@ -9,7 +9,7 @@ CREATE TABLE product(
     priceTTC DECIMAL(5,2),
     photo VARCHAR(255),
     promo INT,
-    type VARCHAR(45)
+    type VARCHAR(45),
     PRIMARY KEY(id)
     );
 
