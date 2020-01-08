@@ -34,6 +34,18 @@ export class ProductsRepository {
           });
     }
 
+     /**
+     * Make a query to the database to retrieve products by category in parameter. 
+     * Return the products found in a promise.
+     * @param category products category
+     */
+    findByCategory(category: string): Promise<Product[]> {
+      return this.connection.query(`SELECT * FROM ${this.table} WHERE category = ?`, [category])
+      .then((results: any) => {
+        return results.map((product: any) => new Product(product));
+      });
+    }
+
     /**
      * Make a query to the database to retrieve one post by its id in parameter. 
      * Return the post found in a promise.

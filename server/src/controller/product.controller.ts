@@ -18,12 +18,25 @@ export const ProductsController = (app: Application) => {
      * Return all posts in JSON
      */
     router.get('/', (req: Request, res: Response) => {
-      productsService.getAll().then(results => {
-            res.send(results);
-        })
-        .catch(err => {
-          console.log(err);
-        })
+      const category =req.query.category;
+
+      if(!category){
+        productsService.getAll().then(results => {
+              res.send(results);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+        }
+      else{
+        productsService.getByCategory(category).then(result => {
+          res.send(result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    
+      }
     });
 
     /**
@@ -81,5 +94,5 @@ export const ProductsController = (app: Application) => {
         })
     });
 
-    app.use('/product', router);
+    app.use('/products', router);
 };

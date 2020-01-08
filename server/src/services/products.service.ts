@@ -32,6 +32,14 @@ export class ProductsService {
     }
 
     /**
+     * Return a promise which contains the products relative to the category in parameter.
+     * @param category products category
+     */
+    getByCategory(category: string): Promise<Product[]> {
+      return this.repository.findByCategory(category);
+  }
+
+    /**
      * Return a promise which contains the post relative to the id in parameter.
      * @param id post id
      */
