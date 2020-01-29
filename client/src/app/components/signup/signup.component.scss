@@ -1,7 +1,11 @@
 .upContainer{
-  width: 40%;
-  display: flex;
-  flex-direction: column;
+  background-color: white;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 4px;
+  align-self: center;
+  height: 400px;
+  color : #3f51b5
 }
 .formContainer{
   display: flex;

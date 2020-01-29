@@ -1,0 +1,32 @@
+<div class="inContainer">
+    <div class="deja"><div class="inscrit">DÉJÀ INSCRIT ?</div></div>
+    <h2>CONNECTEZ-VOUS :</h2>
+    <form [formGroup]="credentials" (ngSubmit)="submitSignIn()">
+        <div class="formContainer">
+
+            <mat-form-field>
+                <input type="text" matInput placeholder="email*" formControlName="email">
+            </mat-form-field>
+            <mat-error *ngIf="credentials.get('email').errors && !credentials.get('email').pristine" class="error-msg">
+                <div [hidden]="!credentials.get('email').errors.required">Un email est requis.</div>
+            </mat-error>
+
+            <mat-form-field>
+                <input type="password" matInput placeholder="Mot de passe*" formControlName="password">
+            </mat-form-field>
+            <mat-error *ngIf="credentials.get('password').errors && !credentials.get('password').pristine"
+                class="error-msg">
+                <div [hidden]="!credentials.get('password').errors.required">Un mot de passe est
+                    requis.</div>
+            </mat-error>
+
+        </div>
+
+        <button mat-button type="submit" [disabled]="!credentials.valid">Valider</button>
+
+        <div *ngIf="!credentials.valid" class="error-msg">
+            Tous les champs obligatoires(*) ne sont pas remplis.
+        </div>
+
+    </form>
+</div>

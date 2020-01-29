@@ -1,0 +1,31 @@
+*{
+    background-color: #95adcb;
+}
+.contain{
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+}
+app-signin{
+    width: 45%;
+    align-self: center;
+    
+}
+.ou{
+    height: 400px;
+    display : flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: center;
+    color : #3f51b5;
+}
+.sep{
+    width: 1px;
+    background-color:  #3f51b5;
+    height: 40%;
+    align-self: center;
+    }
+app-signup{
+    width: 45%;
+    align-self: center;
+}

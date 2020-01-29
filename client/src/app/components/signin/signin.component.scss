@@ -1,0 +1,31 @@
+.inContainer{
+    background-color: white;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 4px;
+    align-self: center;
+    height: 400px;
+    color : #3f51b5
+}
+.deja{
+    background: url('src/assets/img/dejainscrit.jpg') no-repeat;
+    background-size: contain;
+    height: 250px;
+    width: 100%;
+}
+.inscrit{
+   text-align: right;
+   padding: 32px;
+   font-size: 1.3em;
+}
+.mat-button{
+    background-color:#95adcb;
+    width: 50%;
+    margin: auto;
+    font-family: 'Russo One', sans-serif;
+  }
+
+mat-form-field{
+    padding: 4px;
+    font-size: 0.8em;
+  }
