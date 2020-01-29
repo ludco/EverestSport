@@ -13,9 +13,9 @@
     <div fxShow="true" fxHide.lt-md="true">
       <a mat-button routerLink="/">
         <mat-menu #appHiverMenu="matMenu">
-          <button routerLink="/ski" mat-menu-item>Ski</button>
-          <button routerLink="/snowboard" mat-menu-item>Snowbard</button>
-          <button routerLink="/raquette" mat-menu-item>Raquettes</button>
+          <button routerLink="/category/ski" mat-menu-item>Ski</button>
+          <button routerLink="/category/snowboard" mat-menu-item>Snowbard</button>
+          <button routerLink="/category/raquette" mat-menu-item>Raquettes</button>
         </mat-menu>
         <button mat-icon-button [matMenuTriggerFor]="appHiverMenu">
           <mat-icon>Hiver</mat-icon>
@@ -28,15 +28,15 @@
           <button routerLink="/camping" mat-menu-item>Camping</button>
         </mat-menu>
         <button mat-icon-button [matMenuTriggerFor]="appEteMenu">
-          <mat-icon>Ét</mat-icon>
+          <mat-icon>Été</mat-icon>
         </button>
       </a>
-      <a mat-button routerLink="/promos">Promos</a>
-      <a mat-button routerLink="/signup"><img src="./../assets/img/connect.png" class="cart"></a>
+      <a mat-button routerLink="promos">Promos</a>
+      <a mat-button routerLink="/connect"><img src="./../assets/img/connect.png" class="cart"></a>
       <a mat-button routerLink="/cart"><img src="./../assets/img/cart.png" class="cart"></a>
     </div>
   </mat-toolbar>
-  <mat-sidenav-container fxFlexFill class="container">
+<mat-sidenav-container fxFlexFill class="container">
     <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
       <div fxLayout="column">
         <a mat-button routerLink="/about-us">Hiver</a>
@@ -45,8 +45,8 @@
         <a mat-button routerLink="/cart"><img src="./../assets/img/cart.png" class="cart"></a>
       </div>
     </mat-sidenav>
-   
-      <router-outlet></router-outlet>
-   
-  </mat-sidenav-container>
+
+    <router-outlet></router-outlet>
+</mat-sidenav-container>
+ 
 </div>

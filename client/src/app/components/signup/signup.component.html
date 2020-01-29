@@ -1,0 +1,36 @@
+<div class="upContainer">
+    <h2>CREER UN COMPTE</h2>
+    <form [formGroup]="signUpForm" (ngSubmit)="submitSignUp()">
+        <div class="formContainer">
+            <mat-form-field>
+                <input type="text" matInput placeholder="email*" formControlName="email">
+            </mat-form-field>
+            <mat-error *ngIf="signUpForm.get('email').errors && !signUpForm.get('email').pristine"
+                class="error-msg">
+                <div [hidden]="!signUpForm.get('email').errors.required">Un email est requis.</div>
+            </mat-error>
+
+            <mat-form-field>
+                <input type="password" matInput placeholder="Mot de passe*" formControlName="password">
+            </mat-form-field>
+            <mat-error *ngIf="signUpForm.get('password').errors && !signUpForm.get('password').pristine"
+                class="error-msg">
+                <div [hidden]="!signUpForm.get('password').errors.required">Un mot de passe est requis.</div>
+            </mat-error>
+            <mat-form-field>
+                <input type="password" matInput placeholder="Confirmer le mot de passe*" formControlName="passwordBis">
+            </mat-form-field>
+            <mat-error *ngIf="signUpForm.get('passwordBis').errors && !signUpForm.get('passwordBis').pristine"
+                class="error-msg">
+                <div [hidden]="!signUpForm.get('passwordBis').errors.required">Un mot de passe est requis.</div>
+            </mat-error>
+            <div *ngIf="noMatch">Les mots de passe sont differents.</div>
+
+            <button mat-button type="submit" [disabled]="!signUpForm.valid">Valider</button>
+
+            <div *ngIf="!signUpForm.valid" class="error-msg">
+                Tous les champs obligatoires(*) ne sont pas remplis.
+            </div>
+        </div>
+    </form>
+</div>
