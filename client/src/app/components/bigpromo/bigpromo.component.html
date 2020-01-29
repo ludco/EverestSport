@@ -1,0 +1,15 @@
+<div class="bigpromo">
+    <h3>PROMO DU MOIS</h3>
+    <div class="prod">
+        <a routerLink="/ski"><img [src]="product.photo" mat-card-image></a>
+
+    </div>
+    <h4> {{product.name}}</h4>
+    <div>
+        <span class="promo">PROMO : {{product.promo}}%</span><span class="oldprice">{{product.priceTTC}}€</span></div>
+    <div class="newprice">
+        {{ (product.priceTTC-product.priceTTC*product.promo/100).toFixed(2).replace('.',',')}}€
+    </div>
+    <a routerLink="/ski"><button mat-button>J'en profite !</button></a>
+
+</div>

@@ -1,0 +1,35 @@
+mat-card{
+    width:90%;
+    height: 90%;
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    display : flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+mat-card-subtitle{
+    font-size: 2em;
+    align-self: center;
+    margin-top : 8px;
+}
+.mat-card-subtitle:not(:first-child){
+    margin-top: 8px;
+}
+img{
+    height: 300px;
+    width: auto;
+    margin: auto;
+    padding: 8px;
+}
+
+.oldprice{
+    text-decoration: line-through;
+    font-size: 1em;
+}
+.promo{
+    background-color: red;
+    color : white;
+    font-size: 1em;
+    margin : 8px;
+    padding : 4px;
+}

@@ -1,0 +1,28 @@
+.container{
+    max-width : 1200px;
+    height: auto;
+    margin:auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #95adcb;
+}
+app-product-detail{
+    width: 30%;
+    min-width : 300px;
+    margin: 4px 16px ; 
+    padding: 4px;
+}
+
+
+@media screen and (max-width: 780px) {
+    .container{
+        max-width: 320px;
+    }
+    app-product-detail{
+        width: 85%;
+        min-width : 280px;
+    }
+
+    
+
+}

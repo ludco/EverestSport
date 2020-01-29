@@ -1,0 +1,51 @@
+*{
+    font-family: 'Russo One', sans-serif;
+}
+.companyName{
+    font-size: 150%;
+    vertical-align: middle;
+    font-family: 'Russo One', sans-serif;
+    flex-wrap: nowrap;
+}
+div {
+    overflow: inherit;
+}
+a{
+    text-decoration: none;
+    font-size: 100%;
+    white-space: normal;
+    vertical-align : text-bottom;
+}
+button{
+    font-size: 100%;
+    min-width: min-content;
+    font-family: 'Russo One', sans-serif;
+}
+.example-icon {
+    padding: 0 36px;
+  }
+
+.spacer {
+    flex: 2 2 auto;
+  }
+.mat-sidenav-content{
+      font-size: 200%;
+      text-align: center;
+  }
+
+.cart{
+    width:30px;
+    padding-bottom: 4px;
+}
+.menu{
+    width:30px;
+}
+.logo{
+    width:40px;
+    padding-left: 8px;
+}
+@media screen and (max-width: 780px) {
+    .companyName{
+        font-size : 100%;
+    }
+}

@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-title>
+        {{product.name}}
+    </mat-card-title>
+    <img [src]="product.photo" mat-card-image>
+    <mat-card-subtitle *ngIf="product.promo===0">
+        {{product.priceTTC.toFixed(2).replace('.',',')}}€
+    </mat-card-subtitle>
+    <div *ngIf="product.promo!==0">
+        <span class="promo">PROMO : {{product.promo}}%</span><span class="oldprice">{{product.priceTTC}}€</span></div>
+    <mat-card-subtitle *ngIf="product.promo!==0" class="newprice">
+        {{ (product.priceTTC-product.priceTTC*product.promo/100).toFixed(2).replace('.',',')}}€
+    </mat-card-subtitle>
+</mat-card>

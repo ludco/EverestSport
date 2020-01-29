@@ -1,0 +1,66 @@
+.bigpromo{
+    text-align: center;
+    min-width: 33%;
+    height: 400px;
+    background-color: #3f51b5;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    color : whitesmoke;
+    box-shadow: 5px 5px 15px -6px rgba(0,0,0,0.75);
+}
+.prod{
+    background-color: white;
+    padding: 8px;
+    margin: auto;
+    margin-top: 16px;
+    border-radius: 4px;
+    width:280px;
+    height:300px;
+    overflow:hidden;
+    border-radius: 8px;
+    
+}
+    
+img{
+    margin: 4px;
+    position:relative;
+    width: 280px;
+    border-radius: 4px;
+}
+h3{
+    background-color : #ce1c1c;
+    width: 300px;
+    border-radius: 4px 4px 0 0;
+    padding: 8px;
+}
+h4{
+    margin: 16px;
+    font-size: 1.1em;
+}
+
+.oldprice{
+    text-decoration: line-through;
+    margin : 8px;
+    color : #000000;
+    font-size: 1.1em;
+}
+.newprice{
+    font-size: 2em;
+    margin : 8px;
+  
+   
+}
+.promo{
+    background-color: #ce1c1c;
+    font-size: 1.3em;
+    margin : 16px;
+    padding : 4px;
+}
+.mat-button{
+    background-color:#95adcb;
+    width: 50%;
+    margin: auto;
+    font-family: 'Russo One', sans-serif;
+}
