@@ -29,10 +29,11 @@ CREATE TABLE user(
   firstname VARCHAR(60),
   lastname VARCHAR(60),
   email VARCHAR(60),
+  password VARCHAR(255),
   address VARCHAR(200),
   zip VARCHAR(6),
   city VARCHAR(60),
-  phone VARCHAR(20)
+  role VARCHAR(20)
   
 );
 

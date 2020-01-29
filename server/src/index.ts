@@ -2,6 +2,8 @@ import express from 'express';
 
 import loaders from './loaders';
 import { ProductsController } from './controller/product.controller';
+import { UsersController } from './controller/user.controller';
+import { AuthController } from './controller/auth.controller';
 
 
 async function startServer() {
@@ -13,6 +15,8 @@ async function startServer() {
 
     // Ajout des différentes route de votre application
     ProductsController(app);
+    UsersController(app);
+    AuthController(app);
 
     // Démarrage du serveur une fois que tout est correctement init
     app.listen(3000, () => console.log('Express server  is running'));

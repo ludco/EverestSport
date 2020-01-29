@@ -2,29 +2,80 @@
     <h2>CREER UN COMPTE</h2>
     <form [formGroup]="signUpForm" (ngSubmit)="submitSignUp()">
         <div class="formContainer">
+
+            <div class="name">
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Nom*" formControlName="lastname">
+                </mat-form-field>
+                <mat-error *ngIf="signUpForm.get('lastname').errors && !signUpForm.get('lastname').pristine"
+                    class="error-msg">
+                    <div [hidden]="!signUpForm.get('lastname').errors.required">Un nom est requis.</div>
+                </mat-error>
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Prénom*" formControlName="firstname">
+                </mat-form-field>
+                <mat-error *ngIf="signUpForm.get('firstname').errors && !signUpForm.get('firstname').pristine"
+                    class="error-msg">
+                    <div [hidden]="!signUpForm.get('firstname').errors.required">Un prénom est requis.</div>
+                </mat-error>
+            </div>
+
+            <div formGroupName="credentials">
+                <div>
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="email*" formControlName="email">
+                    </mat-form-field>
+                    <mat-error
+                        *ngIf="signUpForm.get('credentials.email').errors && !signUpForm.get('credentials.email').pristine"
+                        class="error-msg">
+                        <div [hidden]="!signUpForm.get('credentials.email').errors.required">Un email est requis.</div>
+                    </mat-error>
+                    <div>
+                        <mat-form-field>
+                            <input type="password" matInput placeholder="Mot de passe*" formControlName="password">
+                        </mat-form-field>
+                        <mat-error
+                            *ngIf="signUpForm.get('credentials.password').errors && !signUpForm.get('credentials.password').pristine"
+                            class="error-msg">
+                            <div [hidden]="!signUpForm.get('credentials.password').errors.required">Un mot de passe est
+                                requis.</div>
+                        </mat-error>
+                        <mat-form-field>
+                            <input type="password" matInput placeholder="Confirmer le mot de passe*"
+                                formControlName="passwordBis">
+                        </mat-form-field>
+                        <mat-error
+                            *ngIf="signUpForm.get('credentials.passwordBis').errors && !signUpForm.get('credentials.passwordBis').pristine"
+                            class="error-msg">
+                            <div [hidden]="!signUpForm.get('credentials.passwordBis').errors.required">Le mot de passe
+                                est requis.</div>
+                        </mat-error>
+                        <div *ngIf="noMatch">Les mots de passe sont differents.</div>
+                    </div>
+                </div>
+            </div>
             <mat-form-field>
-                <input type="text" matInput placeholder="email*" formControlName="email">
+                <input type="text" matInput placeholder="Adresse*" formControlName="address">
             </mat-form-field>
-            <mat-error *ngIf="signUpForm.get('email').errors && !signUpForm.get('email').pristine"
+            <mat-error *ngIf="signUpForm.get('address').errors && !signUpForm.get('address').pristine"
                 class="error-msg">
-                <div [hidden]="!signUpForm.get('email').errors.required">Un email est requis.</div>
+                <div [hidden]="!signUpForm.get('address').errors.required">Une addresse est requise.</div>
             </mat-error>
 
-            <mat-form-field>
-                <input type="password" matInput placeholder="Mot de passe*" formControlName="password">
-            </mat-form-field>
-            <mat-error *ngIf="signUpForm.get('password').errors && !signUpForm.get('password').pristine"
-                class="error-msg">
-                <div [hidden]="!signUpForm.get('password').errors.required">Un mot de passe est requis.</div>
-            </mat-error>
-            <mat-form-field>
-                <input type="password" matInput placeholder="Confirmer le mot de passe*" formControlName="passwordBis">
-            </mat-form-field>
-            <mat-error *ngIf="signUpForm.get('passwordBis').errors && !signUpForm.get('passwordBis').pristine"
-                class="error-msg">
-                <div [hidden]="!signUpForm.get('passwordBis').errors.required">Un mot de passe est requis.</div>
-            </mat-error>
-            <div *ngIf="noMatch">Les mots de passe sont differents.</div>
+            <div class="zipcity">
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Code Postal*" formControlName="zip">
+                </mat-form-field>
+                <mat-error *ngIf="signUpForm.get('zip').errors && !signUpForm.get('zip').pristine" class="error-msg">
+                    <div [hidden]="!signUpForm.get('zip').errors.required">Un code postal est requis.</div>
+                </mat-error>
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Ville*" formControlName="city">
+                </mat-form-field>
+                <mat-error *ngIf="signUpForm.get('city').errors && !signUpForm.get('city').pristine" class="error-msg">
+                    <div [hidden]="!signUpForm.get('city').errors.required">Une ville est requise.</div>
+                </mat-error>
+            </div>
 
             <button mat-button type="submit" [disabled]="!signUpForm.valid">Valider</button>
 

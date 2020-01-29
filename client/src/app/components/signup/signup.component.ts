@@ -16,9 +16,17 @@ import { AuthService } from 'src/app/shared/auth.service';
 export class SignupComponent implements OnInit {
 
   signUpForm = this.fb.group({
-    email: [''],
-    password: [''],
-    passwordBis: [''],
+    firstname : [''],
+    lastname : [''],
+    credentials : this.fb.group({
+      email : [''],
+      password : [''],
+      passwordBis : [''],
+    }),
+    address : [''],
+    zip : [''],
+    city : [''],
+   
   });
 
   noMatch: boolean = false;
@@ -35,9 +43,17 @@ export class SignupComponent implements OnInit {
   }
 
   submitSignUp() {
-    this.user.email = this.signUpForm.value.identifiant;
-    this.user.password = this.signUpForm.value.password;
-    let passwordBis: string = this.signUpForm.value.passwordBis;
+    this.user.firstname = this.signUpForm.value.firstname;
+    this.user.lastname = this.signUpForm.value.lastname;
+    this.user.email = this.signUpForm.value.credentials.email;
+    // check if password are equal
+    this.user.password = this.signUpForm.value.credentials.password;
+    let passwordBis: string = this.signUpForm.value.credentials.passwordBis;
+    //
+    this.user.address = this.signUpForm.value.address;
+    this.user.zip = this.signUpForm.value.zip;
+    this.user.city = this.signUpForm.value.city;
+
     if (this.user.password === passwordBis) {
 
       //SIGN UP  
@@ -47,7 +63,7 @@ export class SignupComponent implements OnInit {
             let snackBarRef = this._snackBar.open('Votre compte a été créé avec succés !', '', {
               duration: 1500,
             });
-            this.router.navigateByUrl('/admin/signin');
+            this.router.navigateByUrl('/connect');
           }
         },
         (error) => {

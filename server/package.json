@@ -25,12 +25,16 @@
     "typescript": "^3.7.3"
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^8.3.7",
     "@types/mysql": "^2.15.8",
+    "@types/randombytes": "^2.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-router": "0.0.1",
+    "jsonwebtoken": "^8.5.1",
     "mysql": "^2.17.1",
-    "node-dev": "^4.0.0"
+    "node-dev": "^4.0.0",
+    "randombytes": "^2.1.0"
   }
 }
