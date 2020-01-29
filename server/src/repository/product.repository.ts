@@ -44,6 +44,15 @@ export class ProductsRepository {
     }
 
     /**
+     * Make a query to the database to retrieve one product which is the big promo. 
+     * Return the product found in a promise.
+     */
+    findBigPromo(): Promise<Product> {
+      return this.connection.query(`SELECT * FROM ${this.table} WHERE isBigPromo = 1`)
+        .then((results: any) => new Product(results[0]));
+  }
+
+    /**
      * Make a query to the database to retrieve one product by its id in parameter. 
      * Return the product found in a promise.
      * @param id product id
