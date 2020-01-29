@@ -2,10 +2,7 @@ import { Product } from './../models/product';
 import { MysqlConnection } from './../loaders/mysql';
 
 /**
- * Cette classe est un repository
- * C'est ici qu'on met tout les accès à la bdd
- * Attention, aucune logique javascript ne doit apparaitre ici.
- * Il s'agit seulement de la couche de récupération des données (requeêe sql)
+ * Products Repository (SQL request)
  */
 export class ProductsRepository {
 
@@ -25,7 +22,7 @@ export class ProductsRepository {
     }
 
     /**
-     * Make a query to the database to retrieve all posts and return it in a promise.
+     * Make a query to the database to retrieve all products and return it in a promise.
      */
     findAll(): Promise<Product[]> {
         return this.connection.query(`SELECT * from ${this.table}`)
@@ -47,9 +44,9 @@ export class ProductsRepository {
     }
 
     /**
-     * Make a query to the database to retrieve one post by its id in parameter. 
-     * Return the post found in a promise.
-     * @param id post id
+     * Make a query to the database to retrieve one product by its id in parameter. 
+     * Return the product found in a promise.
+     * @param id product id
      */
     findById(id: number): Promise<Product> {
         return this.connection.query(`SELECT * FROM ${this.table} WHERE id = ?`, [id])
@@ -58,8 +55,8 @@ export class ProductsRepository {
 
 
     /**
-     * Make a query to the database to insert a new post and return the created post in a promise.
-     * @param product post to create
+     * Make a query to the database to insert a new product and return the created product in a promise.
+     * @param product product to create
      */
     insert(product: Product) {
       return this.connection.query(
@@ -72,8 +69,8 @@ export class ProductsRepository {
     }
 
     /**
-     * Make a query to the database to update an existing post and return the updated post in a promise.
-     * @param product post to update
+     * Make a query to the database to update an existing product and return the updated product in a promise.
+     * @param product product to update
      */
     update(product: Product) {
       return this.connection.query(
@@ -85,8 +82,8 @@ export class ProductsRepository {
     }
 
     /**
-     * Make a query to the database to delete an existing post and return an empry promise
-     * @param id post id to delete
+     * Make a query to the database to delete an existing product and return an empry promise
+     * @param id product id to delete
      */
     delete(id: number): Promise<any> {
       return this.connection.query(`DELETE FROM ${this.table} WHERE id = ?`, [id]);
