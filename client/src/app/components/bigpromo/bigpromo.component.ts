@@ -15,7 +15,6 @@ export class BigpromoComponent implements OnInit {
 
   ngOnInit() {
     this.productService.getBigPromo().subscribe(response => {
-      console.log(response)
       this.product = response;
     
     });

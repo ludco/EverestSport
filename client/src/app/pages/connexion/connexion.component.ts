@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-connexion',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConnexionComponent implements OnInit {
 
-  constructor() { }
+  constructor( private authService : AuthService) { }
 
   ngOnInit() {
   }
 
+  /**
+   * logout button clicked
+   */
+  logoutClicked(){
+    this.authService.logout();
+  }
 }

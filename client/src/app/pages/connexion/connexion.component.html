@@ -1,4 +1,10 @@
-<div class="contain">
+<div class="containConnect" *ngIf="this.authService.displayConnect()">
+    <div class="connected">
+        <h2 >VOUS ETES CONNECTÉ</h2>
+        <button mat-button (click)="logoutClicked()">Déconnexion</button>
+    </div>
+</div>
+<div class="contain" *ngIf="!this.authService.displayConnect()">
     <app-signin></app-signin>
     <div class="ou">
         <div class="sep"></div>

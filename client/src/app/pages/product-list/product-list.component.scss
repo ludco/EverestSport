@@ -15,9 +15,6 @@ app-product-detail{
 
 
 @media screen and (max-width: 780px) {
-    .container{
-        max-width: 320px;
-    }
     app-product-detail{
         width: 85%;
         min-width : 280px;

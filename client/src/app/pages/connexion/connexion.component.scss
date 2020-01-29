@@ -6,6 +6,22 @@
     justify-content: space-around;
     height: 100%;
 }
+.containConnect{
+    display: flex;
+    height: 100%;
+}
+.connected{
+    align-self: center;
+    margin: auto;
+    text-align: center;
+}
+.mat-button{
+    background-color:#3f51b5;
+    width: 50%;
+    margin: auto;
+    font-family: 'Russo One', sans-serif;
+    align-self: center;
+  }
 app-signin{
     width: 45%;
     align-self: center;

@@ -35,17 +35,18 @@ export class SigninComponent implements OnInit {
 
     this.authService.signin(this.user).subscribe(
       results => {
-        this.userService.loadUser().subscribe(result => {
-          this.router.navigateByUrl('/admin');
+        this.authService.loadUser().subscribe(result => {
+          this.router.navigateByUrl('');
           this.authService.displayConnect();
-        
+
         })
       },
       error => {
-        if(error){
-        let snackBarRef = this._snackBar.open("L'identifiant ou le mot de pase sont incorrects", '', {
-          duration: 1500
-        });}
+        if (error) {
+          let snackBarRef = this._snackBar.open("L'identifiant ou le mot de pase sont incorrects", '', {
+            duration: 1500
+          });
+        }
       }
     );
   }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material';
 
@@ -25,7 +25,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms'; 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SigninComponent } from './components/signin/signin.component';
-
+import { AuthInterceptor } from './shared/auth-interceptor';
+import { SoonComponent } from './pages/soon/soon.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { SigninComponent } from './components/signin/signin.component';
     ConnexionComponent,
     SignupComponent,
     NavbarComponent,
-    SigninComponent
+    SigninComponent,
+    SoonComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,11 @@ import { SigninComponent } from './components/signin/signin.component';
     MatSnackBarModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
