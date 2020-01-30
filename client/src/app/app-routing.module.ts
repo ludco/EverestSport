@@ -5,6 +5,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { SoonComponent } from './pages/soon/soon.component';
 import { AdminProductsComponent } from './pages/admin-products/admin-products.component';
+import { ProductComponent } from './pages/product/product.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path :'connect', component : ConnexionComponent},
   {path :'soon', component : SoonComponent},
   {path :'admin/products', component : AdminProductsComponent},
+  {path :'products/:productId', component : ProductComponent},
   {path :'category/:category', component : ProductListComponent}
 ];
 

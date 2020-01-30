@@ -4,6 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material';
 import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +33,8 @@ import { DashbarComponent } from './components/dashbar/dashbar.component';
 import { AdminProductsComponent } from './pages/admin-products/admin-products.component';
 import { AdminProductDetailComponent } from './components/admin-product-detail/admin-product-detail.component';
 import { AdminProductCreateComponent } from './components/admin-product-create/admin-product-create.component';
+import { SearchingComponent } from './components/searching/searching.component';
+import { ProductComponent } from './pages/product/product.component';
 
 
 @NgModule({
@@ -49,7 +52,9 @@ import { AdminProductCreateComponent } from './components/admin-product-create/a
     DashbarComponent,
     AdminProductsComponent,
     AdminProductDetailComponent,
-    AdminProductCreateComponent
+    AdminProductCreateComponent,
+    SearchingComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +73,8 @@ import { AdminProductCreateComponent } from './components/admin-product-create/a
     ReactiveFormsModule,
     MatSnackBarModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatAutocompleteModule
 
   ],
   providers: [{

@@ -1,0 +1,15 @@
+<div class="search">
+    <form (ngSubmit)="goToProduct()">
+        <mat-form-field>
+            <input type="text" placeholder="Chercher un produit" matInput [formControl]="searching"
+                [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <button mat-button type="submit">GO !</button>
+    </form>
+   
+</div>

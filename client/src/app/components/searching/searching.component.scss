@@ -1,0 +1,22 @@
+.search{
+    margin : 0 8px;
+    display: flex;
+}
+.mat-button{
+    background-color:#95adcb;
+    margin: auto;
+    font-family: 'Russo One', sans-serif;
+    margin : 4px;
+    max-width: 20px;
+}
+.mat-form-field{
+    min-width: 300px;
+    font-size: 0.9em;
+}
+
+@media screen and (max-width: 780px) {
+    .mat-form-field{
+        min-width: 200px;
+        font-size: 0.8em;
+    }
+  }
