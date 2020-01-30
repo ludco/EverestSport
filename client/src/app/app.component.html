@@ -1,4 +1,4 @@
-<div style="height: 100vh;">
+<div style="height: 100%;">
   <mat-toolbar color="primary">
     <div fxShow="true" fxHide.gt-sm="true">
       <button mat-icon-button (click)="sidenav.toggle()">
@@ -39,11 +39,32 @@
     </div>
   </mat-toolbar>
   <mat-sidenav-container fxFlexFill class="container">
-    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+    <mat-sidenav #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
       <div fxLayout="column">
-        <a mat-button routerLink="/about-us">Hiver</a>
-        <a mat-button routerLink="/prices">Été</a>
+        <a mat-button routerLink="">
+          <mat-menu #appHiverMenu="matMenu">
+            <button routerLink="/category/ski" mat-menu-item>Ski</button>
+            <button routerLink="/category/snowboard" mat-menu-item>Snowbard</button>
+            <button routerLink="/category/raquette" mat-menu-item>Raquettes</button>
+          </mat-menu>
+          <button mat-icon-button [matMenuTriggerFor]="appHiverMenu">
+            <mat-icon>Hiver</mat-icon>
+          </button>
+        </a>
+        <a mat-button routerLink="">
+          <mat-menu #appEteMenu="matMenu">
+            <button routerLink="/soon" mat-menu-item>Rando</button>
+            <button routerLink="/soon" mat-menu-item>Escalade</button>
+            <button routerLink="/soon" mat-menu-item>Camping</button>
+          </mat-menu>
+          <button mat-icon-button [matMenuTriggerFor]="appEteMenu">
+            <mat-icon>Été</mat-icon>
+          </button>
+        </a>
         <a mat-button routerLink="/promos">Promos</a>
+        <a mat-button routerLink="/connect">
+          <a *ngIf="!this.authService.displayConnect()" mat-button routerLink="connect">Connexion</a>
+          <img *ngIf="this.authService.displayConnect()" src="./../assets/img/connect.png" class="cart"></a>
         <a mat-button routerLink="/cart"><img src="./../assets/img/cart.png" class="cart"></a>
       </div>
     </mat-sidenav>

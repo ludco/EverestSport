@@ -29,3 +29,10 @@ mat-form-field{
     padding: 4px;
     font-size: 0.8em;
   }
+
+  @media screen and (max-width: 780px) {
+    .inContainer{
+      height: auto;
+      margin: 8px;
+    }
+  }

@@ -37,7 +37,7 @@ export class ProductsRepository {
      * @param category products category
      */
     findByCategory(category: string): Promise<Product[]> {
-      return this.connection.query(`SELECT * FROM ${this.table} WHERE category = ?`, [category])
+      return this.connection.query(`SELECT * FROM ${this.table} WHERE category = ? ORDER BY id DESC`, [category])
       .then((results: any) => {
         return results.map((product: any) => new Product(product));
       });
