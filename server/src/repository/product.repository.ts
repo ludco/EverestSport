@@ -25,7 +25,7 @@ export class ProductsRepository {
      * Make a query to the database to retrieve all products and return it in a promise.
      */
     findAll(): Promise<Product[]> {
-        return this.connection.query(`SELECT * from ${this.table}`)
+        return this.connection.query(`SELECT * from ${this.table} ORDER BY id DESC`)
           .then((results: any) => {
             return results.map((product: any) => new Product(product));
           });
@@ -69,8 +69,8 @@ export class ProductsRepository {
      */
     insert(product: Product) {
       return this.connection.query(
-        `INSERT INTO ${this.table} (name,description,photo, priceTTC) VALUES (?,?,?,?)`,
-        [product.name, product.description,product.photo, product.priceTTC ]
+        `INSERT INTO ${this.table} (name, description, photo, priceTTC, promo, category, isBigPromo) VALUES (?,?,?,?,?,?,?)`,
+        [product.name, product.description,product.photo, product.priceTTC, product.promo, product.category, product.isBigPromo ]
       ).then((result: any) => {
         // After an insert the insert id is directly passed in the promise
         return this.findById(result.insertId);
@@ -83,8 +83,8 @@ export class ProductsRepository {
      */
     update(product: Product) {
       return this.connection.query(
-        `UPDATE ${this.table} SET name = ?, description = ?, priceTTC = ?, photo = ? WHERE id = ?`,
-        [product.name, product.description,product.priceTTC, product.photo,  product.id ]
+        `UPDATE ${this.table} SET name = ?, description = ?, priceTTC = ?, photo = ?, promo =?, category = ?, isBigPromo = ? WHERE id = ?`,
+        [product.name, product.description,product.priceTTC, product.photo, product.promo, product.category, product.isBigPromo, product.id ]
       ).then(() => {
         return this.findById(product.id);
       });

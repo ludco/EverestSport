@@ -1,0 +1,88 @@
+<div class="card">
+    <mat-card-title *ngIf="!editMode">
+        {{product.name}}
+    </mat-card-title>
+    <form [formGroup]="editProdForm" (ngSubmit)="onSubmit(product)">
+       
+        <mat-card-title *ngIf="editMode">
+            <mat-form-field>
+                <input type="text" matInput placeholder="Nom du produit" 
+                value="{{product.name}}" formControlName="name">
+            </mat-form-field>
+        </mat-card-title>
+
+        <label *ngIf="editMode">
+            <input type="file" name="photo" (change)="onFileSelect($event)" class="chooseFile">
+        </label>
+
+        <div class="contain">
+            <div class="col1">
+                <img [src]="product.photo">
+
+                <mat-card-subtitle *ngIf="product.promo===0 && !editMode">
+                    {{product.priceTTC.toFixed(2).replace('.',',')}}€
+                </mat-card-subtitle>
+                <mat-card-subtitle *ngIf="editMode" >
+                    <mat-form-field>
+                        <input type="number" min="1" step="any" matInput placeholder="Prix TTC"
+                            value="{{product.priceTTC}}" formControlName="priceTTC">
+                    </mat-form-field>
+                </mat-card-subtitle>
+
+
+                <div *ngIf="product.promo!==0 &&!editMode">
+                    <span class="promo">PROMO:</span><span> {{product.promo}}%</span>
+                    <div class="oldprice">{{product.priceTTC}}€</div>
+                </div>
+                <mat-card-subtitle *ngIf="editMode">
+                    <mat-form-field>
+                        <input type="number" matInput placeholder="Promotion (%)" 
+                        value="{{product.promo}}" formControlName="promo">
+                    </mat-form-field>
+                </mat-card-subtitle>
+
+
+                <mat-card-subtitle *ngIf="product.promo!==0 &&!editMode" class="newprice">
+                    {{ (product.priceTTC-product.priceTTC*product.promo/100).toFixed(2).replace('.',',')}}€
+                </mat-card-subtitle>
+
+                <mat-card-subtitle *ngIf="editMode">
+                    <mat-form-field>
+                        <textarea class="descriptionInput" matInput placeholder="Description"
+                            value="{{product.description}}" formControlName="description">
+                            </textarea>
+                    </mat-form-field>
+                </mat-card-subtitle>
+
+                <mat-card-subtitle *ngIf="editMode">
+                    <mat-form-field>
+                        <mat-label>Categorie</mat-label>
+                        <mat-select formControlName="category" value="{{product.category}}">
+                            <mat-option value="ski">ski</mat-option>
+                            <mat-option value="snowboard">snowboard</mat-option>
+                            <mat-option [value]="raquette">raquette</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-card-subtitle>
+
+            </div>
+
+            <div class="descat">
+                <mat-card-subtitle *ngIf="!editMode">{{product.description}}</mat-card-subtitle>
+
+                <mat-card-subtitle class="cat" *ngIf="!editMode"> Catégorie : {{product.category}}</mat-card-subtitle>
+               
+            </div>
+
+        </div>
+        <div class="buttons" *ngIf="editMode">
+            <button mat-button (click)="return()" *ngIf="editMode">Retour</button>
+            <button mat-button type="submit" [disabled]="!editProdForm.valid" class="suppr">Valider</button>
+        </div>
+    </form>
+    <div class="buttons" *ngIf="!editMode">
+        <button mat-button (click)="modifyProductClicked(product)">Modifier</button>
+        <button mat-button class="suppr" (click)="deleteProductClicked(product)">Supprimer</button>
+    </div>
+
+</div>

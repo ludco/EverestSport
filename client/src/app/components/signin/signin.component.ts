@@ -36,7 +36,7 @@ export class SigninComponent implements OnInit {
     this.authService.signin(this.user).subscribe(
       results => {
         this.authService.loadUser().subscribe(result => {
-          this.router.navigateByUrl('');
+          this.router.navigateByUrl('/admin/products');
           this.authService.displayConnect();
 
         })

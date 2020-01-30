@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +28,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SigninComponent } from './components/signin/signin.component';
 import { AuthInterceptor } from './shared/auth-interceptor';
 import { SoonComponent } from './pages/soon/soon.component';
+import { DashbarComponent } from './components/dashbar/dashbar.component';
+import { AdminProductsComponent } from './pages/admin-products/admin-products.component';
+import { AdminProductDetailComponent } from './components/admin-product-detail/admin-product-detail.component';
+import { AdminProductCreateComponent } from './components/admin-product-create/admin-product-create.component';
 
 
 @NgModule({
@@ -40,7 +45,11 @@ import { SoonComponent } from './pages/soon/soon.component';
     SignupComponent,
     NavbarComponent,
     SigninComponent,
-    SoonComponent
+    SoonComponent,
+    DashbarComponent,
+    AdminProductsComponent,
+    AdminProductDetailComponent,
+    AdminProductCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +67,9 @@ import { SoonComponent } from './pages/soon/soon.component';
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

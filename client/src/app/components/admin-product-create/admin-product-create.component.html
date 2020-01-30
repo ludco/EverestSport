@@ -1,0 +1,83 @@
+<div class="card">
+    <mat-card-title>
+       Créer un produit :
+    </mat-card-title>
+    <form [formGroup]="createProdForm" (ngSubmit)="onSubmit(product)">
+        <mat-card-title>
+            <mat-form-field>
+                <input type="text" matInput placeholder="Nom du produit*" formControlName="name">
+            </mat-form-field>
+            <mat-error *ngIf="createProdForm.get('name').errors && !createProdForm.get('name').pristine"
+                class="error-msg">
+                <div [hidden]="!createProdForm.get('name').errors.required">Un nom de produit est requis.</div>
+            </mat-error>
+        </mat-card-title>
+
+        <div>
+            <div class="contain">
+                <label>
+                    Image:
+                    <input type="file" name="photo" (change)="onFileSelect($event)" class="chooseFile">
+                </label>
+
+                <mat-card-subtitle>
+                    <mat-form-field>
+                        <mat-label>Categorie*</mat-label>
+                        <mat-select formControlName="category">
+                          <mat-option value="ski">ski</mat-option>
+                          <mat-option value="snowboard">snowboard</mat-option>
+                          <mat-option [value]="raquette">raquette</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    <mat-error *ngIf="createProdForm.get('category').errors && !createProdForm.get('category').pristine"
+                        class="error-msg">
+                        <div [hidden]="!createProdForm.get('category').errors.required">Un prix de produit est requis.
+                        </div>
+                    </mat-error>
+                </mat-card-subtitle>
+
+                <mat-card-subtitle>
+                    <mat-form-field>
+                        <input type="number" min="1" step="any" matInput placeholder="Prix TTC*"
+                            formControlName="priceTTC">
+                    </mat-form-field>
+                    <mat-error *ngIf="createProdForm.get('priceTTC').errors && !createProdForm.get('priceTTC').pristine"
+                        class="error-msg">
+                        <div [hidden]="!createProdForm.get('priceTTC').errors.required">Un prix de produit est requis.
+                        </div>
+                    </mat-error>
+                </mat-card-subtitle>
+
+                <mat-card-subtitle>
+                    <mat-form-field>
+                        <input type="number" matInput placeholder="Promotion (%)" formControlName="promo">
+                    </mat-form-field>%
+                </mat-card-subtitle>
+
+                <mat-card-subtitle>
+                    Big Promo ? <input type="checkbox" placeholder="Big Promo ?" formControlName="bigPromo">
+                </mat-card-subtitle>
+            </div>
+            <div>
+                <mat-card-subtitle>
+                    <mat-form-field>
+                        <textarea class="descriptionInput" matInput placeholder="Description*"
+                            formControlName="description">
+                            </textarea>
+                    </mat-form-field>
+                    <mat-error
+                        *ngIf="createProdForm.get('description').errors && !createProdForm.get('description').pristine"
+                        class="error-msg">
+                        <div [hidden]="!createProdForm.get('description').errors.required">Un description est requise.
+                        </div>
+                    </mat-error>
+                </mat-card-subtitle>
+
+            </div>
+        </div>
+        <div class="buttons">
+
+            <button mat-button type="submit" [disabled]="!createProdForm.valid">Valider</button>
+        </div>
+    </form>
+</div>

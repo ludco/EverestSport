@@ -1,0 +1,33 @@
+.container{
+    display: flex;
+    height: 100%;
+  
+}
+app-dashbar{
+    width: 15%;
+    height: 100%;
+}
+.products{
+    max-width: 85%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  
+}
+app-admin-product-detail{
+    width: 33%;
+    min-width: 300px;
+    margin-top: 8px;
+}
+app-admin-product-create{
+    width: 33%;
+    min-width: 300px;
+    margin-top: 8px;
+}
+
+@media screen and (max-width: 810px) {
+    app-admin-product-detail{
+        width: 90%;
+    }
+
+}

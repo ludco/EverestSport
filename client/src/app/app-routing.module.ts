@@ -4,6 +4,7 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { LandingComponent } from './pages/landing/landing.component';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { SoonComponent } from './pages/soon/soon.component';
+import { AdminProductsComponent } from './pages/admin-products/admin-products.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path :'cart', component : ProductListComponent},
   {path :'connect', component : ConnexionComponent},
   {path :'soon', component : SoonComponent},
+  {path :'admin/products', component : AdminProductsComponent},
   {path :'category/:category', component : ProductListComponent}
 ];
 

@@ -5,6 +5,7 @@ export class Product {
     priceTTC : number;
     photo : string;
     promo : number;
+    category : string;
     type : string;
     bigPromo : boolean;
 }

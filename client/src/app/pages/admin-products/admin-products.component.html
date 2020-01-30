@@ -1,0 +1,11 @@
+<div class="container">
+    <app-dashbar>
+    </app-dashbar>
+    <div class="products">
+        <app-admin-product-create></app-admin-product-create>
+        <app-admin-product-detail *ngFor="let product of products" 
+        [product]=product
+        (modifyProductEvent)="modifyProduct($event)"
+        (deleteProductEvent)="deleteProduct($event)"></app-admin-product-detail>
+    </div>
+</div>
