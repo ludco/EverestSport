@@ -5,6 +5,7 @@
     display : flex;
     justify-content: space-around;
     margin: auto;
+    margin-top: 8px;
 }
 h1{
     text-align: center;
@@ -24,19 +25,29 @@ img{
     height: 500px;
     width: auto;
     margin: auto;
-    padding: 8px;
+    padding: 16px;
 }
 
-.oldprice{
-    text-decoration: line-through;
-    font-size: 1em;
-}
+
 .promo{
     background-color: red;
     color : white;
     font-size: 1em;
     margin : 8px;
     padding : 4px;
+}
+.price{
+    display: flex;
+    justify-content: flex-end;
+}
+.priceContain{
+    display: flex;
+    flex-direction: column;
+}
+.oldprice{
+    text-align: right;
+    text-decoration: line-through;
+    font-size: 1em;
 }
 .newprice{
     font-size: 2em;;

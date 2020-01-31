@@ -4,8 +4,12 @@
   padding: 8px;
   margin: 4px;
   align-self: center;
-  height: 400px;
-  color : #3f51b5
+  height: auto;
+  min-height: 400px;;
+  color : #3f51b5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .formContainer{
   display: flex;

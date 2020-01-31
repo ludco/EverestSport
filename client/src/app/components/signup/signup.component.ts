@@ -42,6 +42,9 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Submit form ton register new user
+   */
   submitSignUp() {
     this.user.firstname = this.signUpForm.value.firstname;
     this.user.lastname = this.signUpForm.value.lastname;

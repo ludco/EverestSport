@@ -29,6 +29,9 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Submit form to check user
+   */
   submitSignIn() {
     this.user.email = this.credentials.value.email;
     this.user.password = this.credentials.value.password;

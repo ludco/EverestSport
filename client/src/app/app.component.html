@@ -1,4 +1,4 @@
-<div style="height: 100%;">
+<div style="height: 100%;" class="all">
   <mat-toolbar color="primary">
     <div fxShow="true" fxHide.gt-sm="true">
       <button mat-icon-button (click)="sidenav.toggle()">
@@ -39,7 +39,8 @@
     </div>
   </mat-toolbar>
   <mat-sidenav-container fxFlexFill class="container">
-    <mat-sidenav #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+    <mat-sidenav #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true"
+    role="navigation">
       <div fxLayout="column">
         <a mat-button routerLink="">
           <mat-menu #appHiverMenu="matMenu">

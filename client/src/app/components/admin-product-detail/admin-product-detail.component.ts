@@ -79,6 +79,10 @@ export class AdminProductDetailComponent implements OnInit {
     this.deleteProductEvent.emit(product);
   }
 
+  /**
+   * Submit form to save new image of the modified product if it has changed
+   * @param product 
+   */
   onSubmit(product) {
     this.modifiedroduct = product;
   
@@ -102,6 +106,9 @@ export class AdminProductDetailComponent implements OnInit {
 
 
   }
+  /**
+   * Save new attributes for the modified product to update it in dB
+   */
   editProduct() {
     if (this.editProdForm.value.name) {
       this.modifiedroduct.name = this.editProdForm.value.name;

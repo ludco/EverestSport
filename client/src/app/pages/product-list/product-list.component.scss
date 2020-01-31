@@ -1,8 +1,15 @@
+.container{
+    display: flex;
+    justify-content: center;
+    background-color: #95adcb;
+    height: 84vh;;
+}
 .productsCards{
     max-width : 100%;
     height: auto;
     margin:auto;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     background-color: #95adcb;
 }

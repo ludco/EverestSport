@@ -5,15 +5,19 @@
             {{product.name}}
         </h1>
         <p>{{product.description}}</p>
-        <div>
-            <div *ngIf="product.promo===0" class="newprice">
-                {{product.priceTTC.toFixed(2).replace('.',',')}}€
-            </div>
-            <div *ngIf="product.promo!==0">
-                <span class="promo">PROMO : {{product.promo}}%</span><span class="oldprice">{{product.priceTTC}}€</span>
-            </div>
-            <div *ngIf="product.promo!==0" class="newprice">
-                {{ (product.priceTTC-product.priceTTC*product.promo/100).toFixed(2).replace('.',',')}}€
+        <div class="price">
+            <div class="priceContain">
+                <div *ngIf="product.promo===0" class="newprice">
+                    {{product.priceTTC.toFixed(2).replace('.',',')}}€
+                </div>
+                <div *ngIf="product.promo!==0">
+                    <span class="promo">PROMO : {{product.promo}}%</span>
+                    
+                </div>
+                <span class="oldprice">{{product.priceTTC}}€</span>
+                <div *ngIf="product.promo!==0" class="newprice">
+                    {{ (product.priceTTC-product.priceTTC*product.promo/100).toFixed(2).replace('.',',')}}€
+                </div>
             </div>
         </div>
     </div>

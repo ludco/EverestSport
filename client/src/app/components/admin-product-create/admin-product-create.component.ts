@@ -51,6 +51,9 @@ export class AdminProductCreateComponent implements OnInit {
     }
   }
 
+  /**
+   * Submit form to upload image
+   */
   onSubmit() {
     const formData = new FormData();
     formData.append('photo', this.uploadForm.get('photo').value);
@@ -67,6 +70,9 @@ export class AdminProductCreateComponent implements OnInit {
 
 
   }
+  /**
+   * Save the new product to post it in dB
+   */
   saveProduct() {
     this.newProduct.name = this.createProdForm.value.name;
     this.newProduct.description = this.createProdForm.value.description;
