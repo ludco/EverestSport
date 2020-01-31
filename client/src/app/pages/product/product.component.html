@@ -1,3 +1,20 @@
-<div class="contain">
-    <h2>Bientôt disponible</h2>
+<div class="container">
+    <img [src]="product.photo" mat-card-image>
+    <div class="infos">
+        <h1>
+            {{product.name}}
+        </h1>
+        <p>{{product.description}}</p>
+        <div>
+            <div *ngIf="product.promo===0" class="newprice">
+                {{product.priceTTC.toFixed(2).replace('.',',')}}€
+            </div>
+            <div *ngIf="product.promo!==0">
+                <span class="promo">PROMO : {{product.promo}}%</span><span class="oldprice">{{product.priceTTC}}€</span>
+            </div>
+            <div *ngIf="product.promo!==0" class="newprice">
+                {{ (product.priceTTC-product.priceTTC*product.promo/100).toFixed(2).replace('.',',')}}€
+            </div>
+        </div>
+    </div>
 </div>

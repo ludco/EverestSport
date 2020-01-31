@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/shared/product.service';
 import { Product } from 'src/app/shared/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bigpromo',
@@ -11,7 +12,8 @@ export class BigpromoComponent implements OnInit {
 
   product : Product;
 
-  constructor( private productService : ProductService ) { }
+  constructor( private productService : ProductService,
+    private router : Router ) { }
 
   ngOnInit() {
     this.productService.getBigPromo().subscribe(response => {
@@ -19,6 +21,9 @@ export class BigpromoComponent implements OnInit {
     
     });
     
+  }
+  goToProduct(){
+    this.router.navigate([`/products/${this.product.id}`]);
   }
 
 }
