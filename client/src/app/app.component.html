@@ -11,7 +11,7 @@
     </a>
     <span class="spacer"></span>
     <div fxShow="true" fxHide.lt-md="true">
-      <a mat-button routerLink="">
+      <a mat-button>
         <mat-menu #appHiverMenu="matMenu">
           <button routerLink="/category/ski" mat-menu-item>Ski</button>
           <button routerLink="/category/snowboard" mat-menu-item>Snowbard</button>
@@ -21,9 +21,9 @@
           <mat-icon>Hiver</mat-icon>
         </button>
       </a>
-      <a mat-button routerLink="">
+      <a mat-button>
         <mat-menu #appEteMenu="matMenu">
-          <button routerLink="/soon" mat-menu-item>Rando</button>
+          <button routerLink="/soon" mat-menu-item>Ski</button>
           <button routerLink="/soon" mat-menu-item>Escalade</button>
           <button routerLink="/soon" mat-menu-item>Camping</button>
         </mat-menu>
@@ -42,7 +42,7 @@
     <mat-sidenav #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true"
     role="navigation">
       <div fxLayout="column">
-        <a mat-button routerLink="">
+        <a mat-button>
           <mat-menu #appHiverMenu="matMenu">
             <button routerLink="/category/ski" mat-menu-item>Ski</button>
             <button routerLink="/category/snowboard" mat-menu-item>Snowbard</button>
@@ -52,7 +52,7 @@
             <mat-icon>Hiver</mat-icon>
           </button>
         </a>
-        <a mat-button routerLink="">
+        <a mat-button>
           <mat-menu #appEteMenu="matMenu">
             <button routerLink="/soon" mat-menu-item>Rando</button>
             <button routerLink="/soon" mat-menu-item>Escalade</button>

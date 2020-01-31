@@ -23,7 +23,6 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { BigpromoComponent } from './components/bigpromo/bigpromo.component';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms'; 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SigninComponent } from './components/signin/signin.component';
@@ -46,7 +45,6 @@ import { ProductComponent } from './pages/product/product.component';
     BigpromoComponent,
     ConnexionComponent,
     SignupComponent,
-    NavbarComponent,
     SigninComponent,
     SoonComponent,
     DashbarComponent,
