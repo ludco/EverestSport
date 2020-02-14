@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Product } from './product';
 import { Category } from './category';
@@ -38,6 +38,16 @@ export class ProductService {
     return this.http.get<Product>(this.baseUrl + '/products/?bigPromo=1');
 
   }
+
+  /**
+   * Get all the products and categories at the same time
+   */
+  getProductsAndCategories(): Observable<any[]> {
+    return forkJoin(
+      this.getAllProducts(),
+      this.getCategories(),
+    )
+  };
   /**
    * Modify a product 
    * @param product 

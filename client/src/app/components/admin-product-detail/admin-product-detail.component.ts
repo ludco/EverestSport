@@ -138,12 +138,10 @@ export class AdminProductDetailComponent implements OnInit {
     if (this.editProdForm.value.bigPromo) {
       this.modifiedroduct.bigPromo = this.editProdForm.value.bigPromo;
     }
-    console.log('modifiedProd', this.modifiedroduct)
 
 
     this.productService.editProduct(this.modifiedroduct).subscribe(
       result => {
-        console.log('result', result)
         location.reload();
 
       });

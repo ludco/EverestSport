@@ -10,31 +10,27 @@ import { Category } from 'src/app/shared/category';
 })
 export class AdminProductsComponent implements OnInit {
 
-  products : Product[];
-  categories : Category[];
+  products: Product[];
+  categories: Category[];
 
-  constructor(private productService : ProductService) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
+    this.productService.getProductsAndCategories().subscribe(
+      result => {
+        this.products = result[0];
+        this.categories = result[1];
 
-    this.productService.getCategories().subscribe(
-      categories => {this.categories = categories}
-    )
-
-    this.productService.getAllProducts().subscribe(
-      products => {this.products = products}
-      
-    )
-   
+      })
   }
 
-  modifyProduct(product){
+  modifyProduct(product) {
     this.productService.editProduct(product);
 
   }
 
-  deleteProduct(product){
-    this.productService.delProduct(product).subscribe(response=>location.reload());
+  deleteProduct(product) {
+    this.productService.delProduct(product).subscribe(response => location.reload());
   }
 
 }
