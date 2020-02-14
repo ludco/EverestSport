@@ -3,8 +3,10 @@
     </app-dashbar>
     <div class="products">
         <app-admin-product-create></app-admin-product-create>
-        <app-admin-product-detail *ngFor="let product of products" 
-        [product]=product
+        <app-admin-product-detail 
+        [categories]="categories"
+        *ngFor="let product of products" 
+        [product]="product"
         (modifyProductEvent)="modifyProduct($event)"
         (deleteProductEvent)="deleteProduct($event)"></app-admin-product-detail>
     </div>

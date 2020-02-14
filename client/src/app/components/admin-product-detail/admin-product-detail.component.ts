@@ -3,6 +3,7 @@ import { Product } from 'src/app/shared/product';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ProductService } from 'src/app/shared/product.service';
+import { Category } from 'src/app/shared/category';
 
 @Component({
   selector: 'app-admin-product-detail',
@@ -12,6 +13,7 @@ import { ProductService } from 'src/app/shared/product.service';
 export class AdminProductDetailComponent implements OnInit {
 
   @Input() product: Product;
+  @Input() categories: Category[];
   @Output() modifyProductEvent = new EventEmitter<Product>();
   @Output() deleteProductEvent = new EventEmitter<Product>();
   editMode: boolean = false;
@@ -39,6 +41,11 @@ export class AdminProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    for (let category of this.categories) {
+      if (category.id === this.product.categoryId) {
+        this.product.categoryName = category.name;
+      }
+    }
     this.uploadForm = this.fb.group({
       photo: ['']
     });
@@ -85,7 +92,7 @@ export class AdminProductDetailComponent implements OnInit {
    */
   onSubmit(product) {
     this.modifiedroduct = product;
-  
+
     if (this.photochanged) {
       const formData = new FormData();
       formData.append('photo', this.uploadForm.get('photo').value);
@@ -119,20 +126,24 @@ export class AdminProductDetailComponent implements OnInit {
     if (this.editProdForm.value.priceTTC) {
       this.modifiedroduct.priceTTC = this.editProdForm.value.priceTTC;
     }
-    if (this.editProdForm.value.promo) {
-      this.modifiedroduct.promo = this.editProdForm.value.promo;
-    }
+    this.modifiedroduct.promo = parseInt(this.editProdForm.value.promo);
+    
     if (this.editProdForm.value.category) {
-      this.modifiedroduct.category = this.editProdForm.value.category;
+      for (let category of this.categories) {
+        if (category.name === this.editProdForm.value.category) {
+          this.modifiedroduct.categoryId = category.id;
+        }
+      }
     }
     if (this.editProdForm.value.bigPromo) {
       this.modifiedroduct.bigPromo = this.editProdForm.value.bigPromo;
     }
-
+    console.log('modifiedProd', this.modifiedroduct)
 
 
     this.productService.editProduct(this.modifiedroduct).subscribe(
       result => {
+        console.log('result', result)
         location.reload();
 
       });

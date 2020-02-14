@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/shared/product.service';
 import { Product } from 'src/app/shared/product';
+import { Category } from 'src/app/shared/category';
 
 @Component({
   selector: 'app-admin-products',
@@ -10,13 +11,21 @@ import { Product } from 'src/app/shared/product';
 export class AdminProductsComponent implements OnInit {
 
   products : Product[];
+  categories : Category[];
 
   constructor(private productService : ProductService) { }
 
   ngOnInit() {
+
+    this.productService.getCategories().subscribe(
+      categories => {this.categories = categories}
+    )
+
     this.productService.getAllProducts().subscribe(
-      response => {this.products = response;}
-    );
+      products => {this.products = products}
+      
+    )
+   
   }
 
   modifyProduct(product){

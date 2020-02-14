@@ -36,7 +36,7 @@
                 </div>
                 <mat-card-subtitle *ngIf="editMode">
                     <mat-form-field>
-                        <input type="number" matInput placeholder="Promotion (%)" 
+                        <input type="number" matInput placeholder="Promotion (%)" min=0 max=100
                         value="{{product.promo}}" formControlName="promo">
                     </mat-form-field>
                 </mat-card-subtitle>
@@ -56,11 +56,9 @@
 
                 <mat-card-subtitle *ngIf="editMode">
                     <mat-form-field>
-                        <mat-label>Categorie</mat-label>
-                        <mat-select formControlName="category" value="{{product.category}}">
-                            <mat-option value="ski">ski</mat-option>
-                            <mat-option value="snowboard">snowboard</mat-option>
-                            <mat-option [value]="raquette">raquette</mat-option>
+                        <mat-label>{{product.categoryName}}</mat-label>
+                        <mat-select formControlName="category">
+                            <mat-option *ngFor="let category of categories" value="category.name">{{category.name}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </mat-card-subtitle>
@@ -70,7 +68,7 @@
             <div class="descat">
                 <mat-card-subtitle *ngIf="!editMode">{{product.description}}</mat-card-subtitle>
 
-                <mat-card-subtitle class="cat" *ngIf="!editMode"> Catégorie : {{product.category}}</mat-card-subtitle>
+                <mat-card-subtitle class="cat" *ngIf="!editMode"> Catégorie : {{product.categoryName}}</mat-card-subtitle>
                
             </div>
 
