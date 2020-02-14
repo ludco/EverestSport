@@ -66,7 +66,7 @@ export class SignupComponent implements OnInit {
             let snackBarRef = this._snackBar.open('Votre compte a été créé avec succés !', '', {
               duration: 1500,
             });
-            this.router.navigateByUrl('/connect');
+            this.router.navigateByUrl('/account');
           }
         },
         (error) => {

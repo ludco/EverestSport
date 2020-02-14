@@ -38,8 +38,13 @@ export class SigninComponent implements OnInit {
 
     this.authService.signin(this.user).subscribe(
       results => {
-        this.authService.loadUser().subscribe(result => {
-          this.router.navigateByUrl('/admin/products');
+        this.authService.loadUser().subscribe(user => {
+          if (user.role === 'admin') {
+            this.router.navigateByUrl('/admin/products');
+          }
+          else {
+            this.router.navigateByUrl('/account');
+          }
           this.authService.displayConnect();
 
         })

@@ -1,0 +1,75 @@
+<div style="height: 100%;" class="all">
+    <mat-toolbar color="primary">
+      <div fxShow="true" fxHide.gt-sm="true">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon><img src="./../assets/img/menu.png" class="menu"></mat-icon>
+        </button>
+      </div>
+      <a mat-button class="companyName" routerLink="/">
+        <span>Everest Sport</span>
+        <img src="./../assets/img/logo.png" class="logo">
+      </a>
+      <span class="spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+        <a mat-button>
+          <mat-menu #appHiverMenu="matMenu">
+            <button routerLink="/category/ski" mat-menu-item>Ski</button>
+            <button routerLink="/category/snowboard" mat-menu-item>Snowbard</button>
+            <button routerLink="/category/raquette" mat-menu-item>Raquettes</button>
+          </mat-menu>
+          <button mat-icon-button [matMenuTriggerFor]="appHiverMenu">
+            <mat-icon>Hiver</mat-icon>
+          </button>
+        </a>
+        <a mat-button>
+          <mat-menu #appEteMenu="matMenu">
+            <button routerLink="/soon" mat-menu-item>Ski</button>
+            <button routerLink="/soon" mat-menu-item>Escalade</button>
+            <button routerLink="/soon" mat-menu-item>Camping</button>
+          </mat-menu>
+          <button mat-icon-button [matMenuTriggerFor]="appEteMenu">
+            <mat-icon>Été</mat-icon>
+          </button>
+        </a>
+        <a mat-button routerLink="promos">Promos</a>
+        <a mat-button routerLink="/connect">
+          <a *ngIf="!this.authService.displayConnect()" mat-button routerLink="connect">Connexion</a>
+          <img *ngIf="this.authService.displayConnect()" src="./../assets/img/connect.png" class="cart"></a>
+        <a mat-button routerLink="/cart"><img src="./../assets/img/cart.png" class="cart"></a>
+      </div>
+    </mat-toolbar>
+    <mat-sidenav-container fxFlexFill class="container">
+      <mat-sidenav #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true"
+      role="navigation">
+        <div fxLayout="column">
+          <a mat-button>
+            <mat-menu #appHiverMenu="matMenu">
+              <button routerLink="/category/ski" mat-menu-item>Ski</button>
+              <button routerLink="/category/snowboard" mat-menu-item>Snowbard</button>
+              <button routerLink="/category/raquette" mat-menu-item>Raquettes</button>
+            </mat-menu>
+            <button mat-icon-button [matMenuTriggerFor]="appHiverMenu">
+              <mat-icon>Hiver</mat-icon>
+            </button>
+          </a>
+          <a mat-button>
+            <mat-menu #appEteMenu="matMenu">
+              <button routerLink="/soon" mat-menu-item>Rando</button>
+              <button routerLink="/soon" mat-menu-item>Escalade</button>
+              <button routerLink="/soon" mat-menu-item>Camping</button>
+            </mat-menu>
+            <button mat-icon-button [matMenuTriggerFor]="appEteMenu">
+              <mat-icon>Été</mat-icon>
+            </button>
+          </a>
+          <a mat-button routerLink="/promos">Promos</a>
+          <a mat-button routerLink="/connect">
+            <a *ngIf="!this.authService.displayConnect()" mat-button routerLink="connect">Connexion</a>
+            <img *ngIf="this.authService.displayConnect()" src="./../assets/img/connect.png" class="cart"></a>
+          <a mat-button routerLink="/cart"><img src="./../assets/img/cart.png" class="cart"></a>
+        </div>
+      </mat-sidenav>
+  
+      <router-outlet></router-outlet>
+    </mat-sidenav-container>
+  </div>

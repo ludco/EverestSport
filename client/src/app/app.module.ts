@@ -34,6 +34,7 @@ import { AdminProductDetailComponent } from './components/admin-product-detail/a
 import { AdminProductCreateComponent } from './components/admin-product-create/admin-product-create.component';
 import { SearchingComponent } from './components/searching/searching.component';
 import { ProductComponent } from './pages/product/product.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { ProductComponent } from './pages/product/product.component';
     AdminProductDetailComponent,
     AdminProductCreateComponent,
     SearchingComponent,
-    ProductComponent
+    ProductComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,6 @@ import { AuthService } from './shared/auth.service';
 export class AppComponent {
   title = 'everest';
 
-  constructor(private router:Router, private authService : AuthService){}
+  constructor(){}
    
 }
