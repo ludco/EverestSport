@@ -31,8 +31,9 @@ export class AdminProductDetailComponent implements OnInit {
   SERVER_URL = "http://localhost:3000/upload";
   uploadForm: FormGroup;
   photochanged: boolean = false;
-
-  modifiedroduct: Product = new Product();
+  bigPromoProduct: Product;
+  modifiedProduct: Product = new Product();
+  showBigPromo: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -41,7 +42,7 @@ export class AdminProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('detail', this.categories)
+
     for (let category of this.categories) {
       if (category.id === this.product.categoryId) {
         this.product.categoryName = category.name;
@@ -50,6 +51,14 @@ export class AdminProductDetailComponent implements OnInit {
     this.uploadForm = this.fb.group({
       photo: ['']
     });
+    this.productService.getBigPromo().subscribe(product => {
+    this.bigPromoProduct = product;
+      if (this.product.id === this.bigPromoProduct.id) {
+        this.showBigPromo = true;
+        console.log(this.product)
+        console.log(this.showBigPromo)
+      }
+    })
   }
 
   modifyProductClicked() {
@@ -92,7 +101,7 @@ export class AdminProductDetailComponent implements OnInit {
    * @param product 
    */
   onSubmit(product) {
-    this.modifiedroduct = product;
+    this.modifiedProduct = product;
 
     if (this.photochanged) {
       const formData = new FormData();
@@ -101,7 +110,7 @@ export class AdminProductDetailComponent implements OnInit {
       this.httpClient.post<any>(this.SERVER_URL, formData).subscribe(
         (res) => {
           console.log(res);
-          this.modifiedroduct.photo = `http://localhost:3000/uploads/${res.data.name}`;
+          this.modifiedProduct.photo = `http://localhost:3000/uploads/${res.data.name}`;
           this.editProduct();
 
         },
@@ -119,30 +128,39 @@ export class AdminProductDetailComponent implements OnInit {
    */
   editProduct() {
     if (this.editProdForm.value.name) {
-      this.modifiedroduct.name = this.editProdForm.value.name;
+      this.modifiedProduct.name = this.editProdForm.value.name;
     }
     if (this.editProdForm.value.description) {
-      this.modifiedroduct.description = this.editProdForm.value.description;
+      this.modifiedProduct.description = this.editProdForm.value.description;
     }
     if (this.editProdForm.value.priceTTC) {
-      this.modifiedroduct.priceTTC = this.editProdForm.value.priceTTC;
+      this.modifiedProduct.priceTTC = this.editProdForm.value.priceTTC;
     }
-    this.modifiedroduct.promo = parseInt(this.editProdForm.value.promo);
-    
+
     if (this.editProdForm.value.category) {
       for (let category of this.categories) {
         if (category.name === this.editProdForm.value.category) {
-          this.modifiedroduct.categoryId = category.id;
+          this.modifiedProduct.categoryId = category.id;
         }
       }
     }
     if (this.editProdForm.value.bigPromo) {
-      this.modifiedroduct.bigPromo = this.editProdForm.value.bigPromo;
+      this.modifiedProduct.bigPromo = true;
+      this.bigPromoProduct.bigPromo = false;
+      this.productService.editProduct(this.bigPromoProduct).subscribe(product => console.log('edit', product))
     }
+    else {
+      this.modifiedProduct.bigPromo = false;
+    }
+    console.log(this.editProdForm.value.promo)
+    if (this.editProdForm.value.promo) {
+      this.modifiedProduct.promo = parseInt(this.editProdForm.value.promo)
+    };
 
-
-    this.productService.editProduct(this.modifiedroduct).subscribe(
+    console.log('prod', this.modifiedProduct)
+    this.productService.editProduct(this.modifiedProduct).subscribe(
       result => {
+        console.log(result)
         location.reload();
 
       });

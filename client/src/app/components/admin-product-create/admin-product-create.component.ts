@@ -102,13 +102,12 @@ export class AdminProductCreateComponent implements OnInit {
     else{
       this.newProduct.bigPromo = false;
     }
-    console.log('new',this.newProduct)
+   
     
 
     this.productService.createProduct(this.newProduct).subscribe(
       result => {
-        console.log('res',result)
-        //location.reload();
+      location.reload();
 
       });
   }
