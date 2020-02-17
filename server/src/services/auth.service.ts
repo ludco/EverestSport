@@ -6,11 +6,9 @@ import { Request, Response } from 'express';
 import randomBytes from 'randombytes';
 
 
-
-
 export class AuthService {
 
-   
+
     // A non-initialized user
     public connectedUser: User | undefined;
 
@@ -28,8 +26,10 @@ export class AuthService {
         this.repository = UsersRepository.getInstance();
     }
 
-
-    // Hash the password to register the new admin
+    /**
+     * Hash the password to register the new user
+     * @param user 
+     */
     async signup(user: User): Promise<User> {
         const salt = randomBytes(32);
         // Hash the password with argon2
@@ -44,7 +44,7 @@ export class AuthService {
      */
     async signin(email: string, password: string) {
         const user = await this.repository.findByMail(email);
-        // Check if identifiant exist in dB
+        // Check if email exist in dB
         if (!user) {
             throw new Error('Informations invalides');
         }

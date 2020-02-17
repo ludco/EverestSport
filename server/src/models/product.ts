@@ -5,8 +5,8 @@ export class Product {
     priceTTC!: number;
     photo! : string;
     promo! : number;
-    category! : string;
-    isBigPromo! : boolean;
+    categoryId! : number;
+    bigPromo! : boolean;
     type! : string
   
     constructor(input: Product) {

@@ -23,15 +23,13 @@
                 <mat-card-subtitle>
                     <mat-form-field>
                         <mat-label>Categorie*</mat-label>
-                        <mat-select formControlName="category">
-                          <mat-option value="ski">ski</mat-option>
-                          <mat-option value="snowboard">snowboard</mat-option>
-                          <mat-option [value]="raquette">raquette</mat-option>
+                        <mat-select formControlName="categoryName">
+                            <mat-option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</mat-option>
                         </mat-select>
                       </mat-form-field>
-                    <mat-error *ngIf="createProdForm.get('category').errors && !createProdForm.get('category').pristine"
+                    <mat-error *ngIf="createProdForm.get('categoryName').errors && !createProdForm.get('categoryName').pristine"
                         class="error-msg">
-                        <div [hidden]="!createProdForm.get('category').errors.required">Un prix de produit est requis.
+                        <div [hidden]="!createProdForm.get('categoryName').errors.required">Une catégorie de produit est requise.
                         </div>
                     </mat-error>
                 </mat-card-subtitle>
@@ -55,7 +53,7 @@
                 </mat-card-subtitle>
 
                 <mat-card-subtitle>
-                    Big Promo ? <input type="checkbox" placeholder="Big Promo ?" formControlName="bigPromo">
+                    Big Promo ? <input type="checkbox" placeholder="Big Promo ?" formControlName="bigPromo" >
                 </mat-card-subtitle>
             </div>
             <div>

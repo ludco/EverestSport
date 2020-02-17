@@ -5,6 +5,7 @@ import { ProductsController } from './controller/product.controller';
 import { UsersController } from './controller/user.controller';
 import { AuthController } from './controller/auth.controller';
 import { UploadController } from './controller/upload.controller';
+import { CategoryController } from './controller/category.controller';
 
 
 async function startServer() {
@@ -18,10 +19,11 @@ async function startServer() {
     ProductsController(app);
     UsersController(app);
     AuthController(app);
-    UploadController(app)
+    UploadController(app);
+    CategoryController(app);
 
     // Démarrage du serveur une fois que tout est correctement init
-    app.listen(3000, () => console.log('Express server  is running'));
+    app.listen(3000, () => console.log('Express server is running'));
   }
 
 startServer();

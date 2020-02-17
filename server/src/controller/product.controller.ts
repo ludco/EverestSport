@@ -3,7 +3,7 @@ import { ProductsService } from './../services/products.service';
 import express, { Router, Request, Response, Application } from 'express';
 
 /**
- * Priduct Controller
+ * Product Controller
  * @param app l'application express
  */
 export const ProductsController = (app: Application) => {
@@ -26,6 +26,7 @@ export const ProductsController = (app: Application) => {
           console.log(err);
         })
     }
+    // sorted by category
     else if (category) {
       productsService.getByCategory(category).then(result => {
         res.send(result);
@@ -35,6 +36,7 @@ export const ProductsController = (app: Application) => {
         });
 
     }
+    // the big Promo one
     else if (bigPromo) {
       productsService.getBigPromo().then(result => {
         res.send(result);
@@ -63,7 +65,7 @@ export const ProductsController = (app: Application) => {
    * Create a new product from a JSON body and return the created post in JSON.
    */
   router.post('/', (req: Request, res: Response) => {
-    const product: Product = req.body; // Automatically transform in a Post object
+    const product: Product = req.body; 
 
     productsService.create(product).then(result => {
       res.send(result);
@@ -74,10 +76,10 @@ export const ProductsController = (app: Application) => {
   });
 
   /**
-   * Update a product relative to its id and return the updated post in JSON.
+   * Update a product relative to its id and return the updated product in JSON.
    */
   router.put('/:id', (req: Request, res: Response) => {
-    const product: Product = req.body; // req.params.id is automatically set into the body
+    const product: Product = req.body; 
 
     productsService.update(product).then(result => {
       res.send(result);
@@ -88,7 +90,7 @@ export const ProductsController = (app: Application) => {
   });
 
   /**
-   * Delete a product relative its id.
+   * Delete a product relative to its id.
    */
   router.delete('/:id', (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
@@ -101,5 +103,6 @@ export const ProductsController = (app: Application) => {
       })
   });
 
+  // route
   app.use('/products', router);
 };

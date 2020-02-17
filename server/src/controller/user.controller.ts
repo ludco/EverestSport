@@ -3,7 +3,7 @@ import { UsersService } from './../services/user.service';
 import express, { Router, Request, Response, Application } from 'express';
 
 /**
- * Priduct Controller
+ * User Controller
  * @param app l'application express
  */
 export const UsersController = (app: Application) => {
@@ -12,7 +12,7 @@ export const UsersController = (app: Application) => {
     const usersService = UsersService.getInstance();
 
     /**
-     * Return all Users in JSON
+     * Return all users in JSON
      */
     router.get('/', (req: Request, res: Response) => {
         usersService.getAll().then(results => {
@@ -24,7 +24,7 @@ export const UsersController = (app: Application) => {
     });
 
     /**
-     * Return only one User in JSON relative to its id
+     * Return only one user in JSON relative to its id
      */
     router.get('/:id', (req: Request, res: Response) => {
         const id = parseInt(req.params.id);
@@ -38,10 +38,10 @@ export const UsersController = (app: Application) => {
 
 
     /**
-     * Update a User relative to its id and return the updated post in JSON.
+     * Update a user relative to its id and return the updated user in JSON.
      */
     router.put('/:id', (req: Request, res: Response) => {
-        const user: User = req.body; // req.params.id is automatically set into the body
+        const user: User = req.body; 
 
         usersService.update(user).then(result => {
             res.send(result);
@@ -52,7 +52,7 @@ export const UsersController = (app: Application) => {
     });
 
     /**
-     * Delete a User relative its id.
+     * Delete a user relative to its id.
      */
     router.delete('/:id', (req: Request, res: Response) => {
         const id = parseInt(req.params.id);
@@ -65,5 +65,7 @@ export const UsersController = (app: Application) => {
             })
     });
 
+
+    // route
     app.use('/Users', router);
 };

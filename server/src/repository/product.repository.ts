@@ -37,7 +37,8 @@ export class ProductsRepository {
      * @param category products category
      */
     findByCategory(category: string): Promise<Product[]> {
-      return this.connection.query(`SELECT * FROM ${this.table} WHERE category = ? ORDER BY id DESC`, [category])
+      console.log(category)
+      return this.connection.query(`SELECT p.* FROM ${this.table} p JOIN category c ON p.categoryId=c.id WHERE c.name=? ORDER BY p.id DESC`, [category])
       .then((results: any) => {
         return results.map((product: any) => new Product(product));
       });
@@ -48,7 +49,7 @@ export class ProductsRepository {
      * Return the product found in a promise.
      */
     findBigPromo(): Promise<Product> {
-      return this.connection.query(`SELECT * FROM ${this.table} WHERE isBigPromo = 1`)
+      return this.connection.query(`SELECT * FROM ${this.table} WHERE bigPromo = 1`)
         .then((results: any) => new Product(results[0]));
   }
 
@@ -69,8 +70,8 @@ export class ProductsRepository {
      */
     insert(product: Product) {
       return this.connection.query(
-        `INSERT INTO ${this.table} (name, description, photo, priceTTC, promo, category, isBigPromo) VALUES (?,?,?,?,?,?,?)`,
-        [product.name, product.description,product.photo, product.priceTTC, product.promo, product.category, product.isBigPromo ]
+        `INSERT INTO ${this.table} (name, description, photo, priceTTC, promo, categoryId, bigPromo) VALUES (?,?,?,?,?,?,?)`,
+        [product.name, product.description,product.photo, product.priceTTC, product.promo, product.categoryId, product.bigPromo ]
       ).then((result: any) => {
         // After an insert the insert id is directly passed in the promise
         return this.findById(result.insertId);
@@ -83,8 +84,8 @@ export class ProductsRepository {
      */
     update(product: Product) {
       return this.connection.query(
-        `UPDATE ${this.table} SET name = ?, description = ?, priceTTC = ?, photo = ?, promo =?, category = ?, isBigPromo = ? WHERE id = ?`,
-        [product.name, product.description,product.priceTTC, product.photo, product.promo, product.category, product.isBigPromo, product.id ]
+        `UPDATE ${this.table} SET name = ?, description = ?, priceTTC = ?, photo = ?, promo =?, categoryId = ?, bigPromo = ? WHERE id = ?`,
+        [product.name, product.description,product.priceTTC, product.photo, product.promo, product.categoryId, product.bigPromo, product.id ]
       ).then(() => {
         return this.findById(product.id);
       });

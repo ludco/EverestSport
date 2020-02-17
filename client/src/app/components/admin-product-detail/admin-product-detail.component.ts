@@ -41,6 +41,7 @@ export class AdminProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('detail', this.categories)
     for (let category of this.categories) {
       if (category.id === this.product.categoryId) {
         this.product.categoryName = category.name;

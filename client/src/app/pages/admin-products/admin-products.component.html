@@ -2,7 +2,9 @@
     <app-dashbar>
     </app-dashbar>
     <div class="products">
-        <app-admin-product-create></app-admin-product-create>
+        <app-admin-product-create
+        [categories]="categories">
+        </app-admin-product-create>
         <app-admin-product-detail 
         [categories]="categories"
         *ngFor="let product of products" 

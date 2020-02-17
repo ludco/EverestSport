@@ -5,7 +5,9 @@ export const UploadController = (app: Application) => {
     const router: Router = express.Router();
   
 
-//post
+/**
+ * Upload a file and in /uploads directory
+ */
 router.post('/', async (req : Request, res : Response) => {
     try {
         if(!req.files) {
@@ -37,6 +39,7 @@ router.post('/', async (req : Request, res : Response) => {
     }
 });
 
+// route
 app.use('/upload', router);
 
 }

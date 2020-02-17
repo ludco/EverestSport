@@ -1,8 +1,6 @@
 import { AuthService } from '../services/auth.service';
 import express, { Router, Request, Response, Application } from 'express';
 import { User } from './../models/user';
-import { UsersService } from 'src/services/user.service';
-
 
 
 export const AuthController = (app: Application) => {
@@ -14,10 +12,9 @@ export const AuthController = (app: Application) => {
     /**
       * Register an user
       */
-
     router.post('/signup', (req: Request, res: Response) => {
         const user: User = req.body;
-        // post the new admin in dB and return it... without password !!
+        // post the new user in dB and return it... without password !!
         authService.signup(user).then((registeredUser: User) => {
             res.send({
                 ...registeredUser,
@@ -47,10 +44,13 @@ export const AuthController = (app: Application) => {
             })
     });
 
-    // Get connected admin in relation with token
+    /**
+     * Get connected admin in relation with token
+     */
     router.get('/me', authService.verifyToken, (req: Request, res: Response) => {
         res.send(req.user);
-    }); 
+    });
 
+    // route
     app.use('/auth', router);
 };

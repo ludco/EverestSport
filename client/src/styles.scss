@@ -3,7 +3,14 @@ body{
     margin: 0%;
     font-family: 'Russo One', sans-serif;
     font-weight: lighter;
+    height: 100vh;
 }
+app-root{
+    height: 100%;
+    width: 100%;
+    display:inline-block
+}
+
 *{
     padding: 0;
     margin: 0;
