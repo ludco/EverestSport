@@ -1,7 +1,8 @@
 <div class="containConnect" *ngIf="this.authService.displayConnect()">
     <div class="connected">
-        <h2 >VOUS ETES CONNECTÉ</h2>
-        <button mat-button (click)="logoutClicked()">Déconnexion</button>
+        <h2 >VOUS ETES CONNECTÉ<span *ngIf="connectedUser && connectedUser.role==='admin'"> EN TANT QU'ADMINISTRATEUR</span></h2>
+        <button mat-button class="primary" routerLink="/admin" *ngIf="connectedUser && connectedUser.role==='admin'">Accéder au Dashboard</button>
+        <button mat-button class="secondary" (click)="logoutClicked()">Déconnexion</button>
     </div>
 </div>
 <div class="contain" *ngIf="!this.authService.displayConnect()">

@@ -1,26 +1,30 @@
-*{
-    background-color: #95adcb;
-}
+
 .contain{
     display: flex;
     justify-content: space-around;
-    height: 92vh;
+    height: 90vh;
+    background: url('src/assets/img/snow.jpg') no-repeat;
+    background-size: cover;
 }
 .containConnect{
     display: flex;
-    height: 92vh;
+    height: 90vh;
+    background: url('src/assets/img/snow.jpg') no-repeat;
+    background-size: cover;
 }
 .connected{
     align-self: center;
     margin: auto;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 .mat-button{
-    background-color:#3f51b5;
-    width: 50%;
+    width: 40%;
     margin: auto;
     font-family: 'Russo One', sans-serif;
     align-self: center;
+    margin: 8px;
   }
 app-signin{
     width: 45%;
