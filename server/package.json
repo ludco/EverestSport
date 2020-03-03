@@ -30,6 +30,7 @@
     "@types/morgan": "^1.7.37",
     "@types/mysql": "^2.15.8",
     "@types/randombytes": "^2.0.0",
+    "argon2": "^0.26.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

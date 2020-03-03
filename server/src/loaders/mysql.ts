@@ -12,7 +12,7 @@ export class MysqlConnection {
       user: 'root', // username
       password: 'root',
       database: 'everest',
-      port : 8889,
+      
     });
   }
 
