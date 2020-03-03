@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 
-function AddProduct(props) {
+function AddProduct({increment}) {
     const  baseUrl = 'http://localhost:3000';
 
     const fileInput = React.createRef();
@@ -29,11 +29,14 @@ function AddProduct(props) {
             priceTTC : productPrice,
             description : productDesc,
         }
+
+        // ADD A PRODUCT
         axios.post(`${baseUrl}/products`, newProduct).then(result=>{
-          console.log(result.data)
+          console.log(result.data);
+          increment();
         })
         .catch(e=>console.log(e));
-        props.inc +=1;
+       
         event.preventDefault();
     }
     return (

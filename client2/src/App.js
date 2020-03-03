@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import ProductList from './Components/ProductList'
-import ProductProvider from './Providers/ProductProvider'
+import AdminProductList from './Components/Admin/AdminProductList';
+import ProductProvider from './Providers/ProductProvider';
 
 function App() {
  
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <ProductProvider>
-        <ProductList/>
+        <AdminProductList/>
       </ProductProvider>
     </div>
   );

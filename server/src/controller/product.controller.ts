@@ -77,8 +77,9 @@ export const ProductsController = (app: Application) => {
    * Update a product relative to its id and return the updated post in JSON.
    */
   router.put('/:id', (req: Request, res: Response) => {
-    const product: Product = req.body; // req.params.id is automatically set into the body
-
+    const product: Product = req.body; 
+    product.id = parseInt(req.params.id);
+    console.log(product)
     productsService.update(product).then(result => {
       res.send(result);
     })
