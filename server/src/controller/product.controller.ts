@@ -79,7 +79,6 @@ export const ProductsController = (app: Application) => {
   router.put('/:id', (req: Request, res: Response) => {
     const product: Product = req.body; 
     product.id = parseInt(req.params.id);
-    console.log(product)
     productsService.update(product).then(result => {
       res.send(result);
     })

@@ -14,7 +14,10 @@ function AdminProduct({ product, decrement }) {
     const [productPrice, setProductPrice] = useState(product.priceTTC);
     const [productDesc, setProductDesc] = useState(product.description);
 
-    // DELETE A PRODUCT
+    /**
+     * DELETE A PRODUCT
+     * @param  id 
+     */
     const deleteProduct = (id) => {
         axios.delete(`${baseUrl}/products/${id}`).then(() => {
             decrement();
@@ -22,34 +25,33 @@ function AdminProduct({ product, decrement }) {
             .catch(e => console.log(e));
 
     }
+    // Modify name
     const handleChangeName = (event) => {
         setProductName(event.target.value)
     }
+    // Modify price
     const handleChangePrice = (event) => {
         setProductPrice(event.target.value)
     }
+    // Modify description
     const handleChangeDesc = (event) => {
         setProductDesc(event.target.value)
     }
 
+    /**
+     * MODIFY A PRODUCT
+     * @param event 
+     */
     const Modify = (event) => {
         let modifiedProduct = {
             name: productName,
             priceTTC: productPrice,
             description: productDesc,
-            photo : null,
-            promo : null,
-            isBigPromo : null,
-            category : null,
-            type : null
         }
-        console.log('avant put', modifiedProduct)
         axios.put(`${baseUrl}/products/${product.id}`,modifiedProduct).then(result => {
             console.log(result.data);
             setCanModify(false)
             decrement();
-
-
         })
             .catch(e => console.log(e));
         event.preventDefault();
