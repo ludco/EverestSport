@@ -1,1 +1,1 @@
-export const sensible = 'sensible thing'
+export const sensible = 'sensible thing and others'
